@@ -1,4 +1,4 @@
-import { run } from "./query"
+import { client, server } from "./query"
 
 import QueryProducts from "./graphql/QueryProducts"
 import QueryProduct from "./graphql/QueryProduct"
@@ -40,51 +40,61 @@ export interface LineItem {
 }
 
 export function cartCreate() {
-	return run(CartCreate)
+	return server(CartCreate)
 }
 
 export function cartAdd(cartId: string, productId: string) {
-	return run(CartAdd, { cartId, productId })
+	return server(CartAdd, { cartId, productId })
 }
 
 export function cartCreateAdd(productId: string) {
-	return run(CartCreateAdd, { productId })
+	return server(CartCreateAdd, { productId })
 }
 
 export function cartRemove(cartId: string, lineItemId: string) {
-	return run(CartRemove, { cartId, lineItemId })
+	return server(CartRemove, { cartId, lineItemId })
 }
 
 export function cartCheckout(cartId: string) {
-	return run(QueryCheckout, { cartId })
+	return server(QueryCheckout, { cartId })
 }
 
 export function getCart(cartId: string) {
-	return run(QueryCart, { cartId })
-}
-
-export function getProducts() {
-	return run(QueryProducts)
+	return server(QueryCart, { cartId })
 }
 
 export function getProduct(handle: string) {
-	return run(QueryProduct, { handle })
+	if (import.meta.env.SSR || import.meta.env.DEV) {
+		return server(QueryProduct, { handle })
+	} else {
+		return client(QueryProduct, { handle })
+	}
+	
+}
+
+export function getProducts() {
+	if (import.meta.env.SSR || import.meta.env.DEV) {
+		return server(QueryProducts)
+	} else {
+		return client(QueryProducts)
+	}
+	
 }
 
 export function checkoutCart(cartId: string) {
-	return run(CheckoutCart, { cartId })
+	return server(CheckoutCart, { cartId })
 }
 
 export function checkoutCreate(productIds: string[]) {
 	const lineItems = productIds.map(productId => ({ quantity: 1, variantId: productId }))
-	return run(CheckoutCreate, { lineItems })
+	return server(CheckoutCreate, { lineItems })
 }
 
 export function checkoutReplace(checkoutId: string, productIds: string[]) {
 	const lineItems = productIds.map(productId => ({ quantity: 1, variantId: productId }))
-	return run(CheckoutReplace, { checkoutId, lineItems })
+	return server(CheckoutReplace, { checkoutId, lineItems })
 }
 
 export function checkoutUpdateCart(cartId: string, checkoutId: string) {
-	return run(CheckoutUpdateCart, { cartId, checkoutId })
+	return server(CheckoutUpdateCart, { cartId, checkoutId })
 }

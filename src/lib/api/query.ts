@@ -1,29 +1,31 @@
 const SHOPIFY_API = "https://suewilliamsacourt.myshopify.com/api/2021-10/graphql"
 const SHOPIFY_KEY = "fee36f2f92ccb124faf294290387fb06"
 
-export async function run<Parsed>(
-	input: { query: string, parse: (data: any) => Parsed },
-	variables?: Record<string, any>
-) {
+function create(url: string) {
+	return async function run<Parsed>(
+		input: { query: string, parse: (data: any) => Parsed },
+		variables?: Record<string, any>
+	) {
+		const { query, parse } = input
 
-	const { query, parse } = input
+		const res = await fetch(url, {
+			method: "post",
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json",
+				"X-Shopify-Storefront-Access-Token": SHOPIFY_KEY
+			},
+			body: JSON.stringify({ query, variables })
+		})
 
-	const headers = {
-		"Content-Type": "application/json",
-		"Accept": "application/json",
-		"X-Shopify-Storefront-Access-Token": SHOPIFY_KEY
+		const { data, errors } = await res.json()
+
+		if (errors) throw errors
+
+		return parse(data)		
 	}
-
-	const res = await fetch(SHOPIFY_API, {
-		method: "post",
-		headers: headers,
-		body: JSON.stringify({ query, variables })
-	})
-
-	const { data, errors } = await res.json()
-
-	if (errors) throw errors
-
-	return parse(data)
-	
 }
+
+export const server = create(SHOPIFY_API)
+
+export const client = create("/shopify")

@@ -1,8 +1,9 @@
 <script context="module">
+	import { getProduct } from "$lib/api"
+
 	/** @type {import("@sveltejs/kit").Load} */
-	export async function load({ page: { params }, fetch }) {
-		const response = await fetch(`/product/${params.handle}.json`)
-		const product = await response.json()
+	export async function load({ page: { params } }) {
+		const product = await getProduct(params.handle)
 		return { props: { product } }
 	}
 </script>

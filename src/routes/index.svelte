@@ -1,8 +1,9 @@
 <script context="module">
+	import { getProducts } from "$lib/api"
+
 	/** @type {import("@sveltejs/kit").Load} */
-	export async function load({ fetch }) {
-		const response = await fetch(`/products.json`)
-		const products = await response.json()
+	export async function load() {
+		const products = await getProducts()
 		return { props: { products } }
 	}
 </script>
