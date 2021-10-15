@@ -1,16 +1,19 @@
 import { Cart, cartAdd, cartCreateAdd } from "$lib/api"
 import { RequestHandler, Response } from "@sveltejs/kit"
-import { serialize } from "cookie"
-import { Locals } from "src/hooks"
+import { parse, serialize } from "cookie"
 
-export const post: RequestHandler<Locals, FormData> = async request => {
+export const post: RequestHandler<unknown, FormData> = async request => {
+
 	const productId = request.body.get("productId")
 	const response: Response = { status: 200, headers: {} }
 
 	let cart: Cart
 
-	if (request.locals.cartId) {
-		cart = await cartAdd(request.locals.cartId, productId)
+	if (request.headers.cookie) {
+		const { cartId } = parse(request.headers.cookie)
+		if (cartId) {
+			cart = await cartAdd(cartId, productId)
+		}
 	}
 
 	if (!cart) {
