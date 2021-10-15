@@ -9,11 +9,16 @@ export function enhance(
 	input: EnhanceInput
 ): SvelteActionReturnType {
 
+	let submitter: HTMLButtonElement
+
+	function handleClick(e) {
+		if (e.target.nodeName == "BUTTON" && e.target.type == "submit") submitter = e.target
+	}
+
 	async function handleSubmit(e: SubmitEvent) {
 		e.preventDefault()
 		const body = new FormData(form)
-		const submitter = e.submitter as HTMLButtonElement
-		if (submitter.name) body.append(submitter.name, submitter.value)
+		if (submitter && submitter.name) body.append(submitter.name, submitter.value)
 		
 		if (input.pending) input.pending(body, form)
 
@@ -37,10 +42,12 @@ export function enhance(
 		}		
 	}
 
+	form.addEventListener("click", handleClick) 
 	form.addEventListener("submit", handleSubmit)
 
 	return {
 		destroy() {
+			form.removeEventListener("click", handleClick) 
 			form.removeEventListener("submit", handleSubmit)
 		}
 	}

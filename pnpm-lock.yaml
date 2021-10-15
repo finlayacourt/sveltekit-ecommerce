@@ -3,16 +3,23 @@ lockfileVersion: 5.3
 specifiers:
   '@sveltejs/adapter-netlify': ^1.0.0-next.33
   '@sveltejs/kit': next
+  '@vitejs/plugin-legacy': ^1.6.2
   cookie: ^0.4.1
   svelte: ^3.42.6
 
 devDependencies:
   '@sveltejs/adapter-netlify': 1.0.0-next.33
   '@sveltejs/kit': 1.0.0-next.184_svelte@3.43.2
+  '@vitejs/plugin-legacy': 1.6.2
   cookie: 0.4.1
   svelte: 3.43.2
 
 packages:
+
+  /@babel/standalone/7.15.8:
+    resolution: {integrity: sha512-EF2uQLeuwflnPRGetWH2Z400ITOSK7YbkXIKxY91EWSiOJ8xsbupT3sx3sFRwVyQgjsHSILFDzLcSo/rGspLhQ==}
+    engines: {node: '>=6.9.0'}
+    dev: true
 
   /@iarna/toml/2.2.5:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
@@ -76,6 +83,19 @@ packages:
       - supports-color
     dev: true
 
+  /@vitejs/plugin-legacy/1.6.2:
+    resolution: {integrity: sha512-p5Bv/827WUpVN2m95ZYXzmjE3AblFE4CHasVoZ7dIwOPlyNcpg70SehEi5AWqyC0E7C1rHD8Nju9rWoV9uBLiw==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      vite: ^2.0.0
+    dependencies:
+      '@babel/standalone': 7.15.8
+      core-js: 3.18.3
+      magic-string: 0.25.7
+      regenerator-runtime: 0.13.9
+      systemjs: 6.10.3
+    dev: true
+
   /cheap-watch/1.0.4:
     resolution: {integrity: sha512-QR/9FrtRL5fjfUJBhAKCdi0lSRQ3rVRRum3GF9wDKp2TJbEIMGhUEr2yU8lORzm9Isdjx7/k9S0DFDx+z5VGtw==}
     engines: {node: '>=8'}
@@ -84,6 +104,11 @@ packages:
   /cookie/0.4.1:
     resolution: {integrity: sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==}
     engines: {node: '>= 0.6'}
+    dev: true
+
+  /core-js/3.18.3:
+    resolution: {integrity: sha512-tReEhtMReZaPFVw7dajMx0vlsz3oOb8ajgPoHVYGxr8ErnZ6PcYEvvmjGmXlfpnxpkYSdOQttjB+MvVbCGfvLw==}
+    requiresBuild: true
     dev: true
 
   /debug/4.3.2:
@@ -335,6 +360,10 @@ packages:
       source-map-js: 0.6.2
     dev: true
 
+  /regenerator-runtime/0.13.9:
+    resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+    dev: true
+
   /require-relative/0.8.7:
     resolution: {integrity: sha1-eZlTn8ngR6N5KPoZb44VY9q9Nt4=}
     dev: true
@@ -381,6 +410,10 @@ packages:
   /svelte/3.43.2:
     resolution: {integrity: sha512-Lj+TJfSeod8UGnoG2opysdlCy4MCck/hHQsZwtNPXdYTwLTz+WC37QwewPhZtd+h3dpfps4h9QzFxWGVI4tzQw==}
     engines: {node: '>= 8'}
+    dev: true
+
+  /systemjs/6.10.3:
+    resolution: {integrity: sha512-mXwfLJdaADqWg1J5+Z0bGQEdcXSe+ePPTfzffMB29aVls5cXveRl0vneSV/19t3SfuUBsAraLP8W/g5u9cmYXA==}
     dev: true
 
   /vite/2.6.7:
