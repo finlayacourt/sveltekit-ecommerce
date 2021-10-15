@@ -7,6 +7,7 @@ function create(url: string) {
 		variables?: Record<string, any>
 	) {
 		const { query, parse } = input
+		const minified = query.replace(/([\s,]|#[^\n\r]+)+/g, ' ').trim() 
 
 		const res = await fetch(url, {
 			method: "post",
@@ -15,7 +16,7 @@ function create(url: string) {
 				"Accept": "application/json",
 				"X-Shopify-Storefront-Access-Token": SHOPIFY_KEY
 			},
-			body: JSON.stringify({ query, variables })
+			body: JSON.stringify({ query: minified, variables })
 		})
 
 		const { data, errors } = await res.json()
