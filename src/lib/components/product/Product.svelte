@@ -66,7 +66,7 @@
 	<Image
 		src={product.image}
 		alt={product.title}
-		widths={[350, 500, 700, 1000]}
+		widths={[350, 500, 650, 800, 950, 1100]}
 		sizes="(min-width: 1182px) 336px, (min-width: 608px) 28vw, 88vw"
 		{loading}
 	/>
