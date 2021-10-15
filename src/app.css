@@ -1,0 +1,100 @@
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("/fonts/proxima-nova-regular.woff2") format("woff2"),
+		 url("/fonts/proxima-nova-regular.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("/fonts/proxima-nova-bold.woff2") format("woff2"),
+		 url("/fonts/proxima-nova-bold.woff") format("woff");
+	font-weight: bold;
+}
+
+body {
+	font-family: "Proxima Nova", Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #806c6c;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	background-color: #fafafa;
+}
+
+body.open {
+	height: 100%;
+	overflow-y: hidden;
+}
+
+main {
+	display: block;
+}
+
+h1 {
+	font-size: 1.4rem;
+	font-weight: 400;
+	margin-top: 0;
+	margin-bottom: 0.4rem;
+	color: #313131;
+}
+
+h2 {
+	font-size: 1rem;
+	font-weight: 700;
+	margin: 0;
+	color: #313131;
+}
+
+h3 {
+	font-size: 1.3rem;
+	font-weight: 400;
+	margin: 0;
+	color: #313131;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	color: #665757;
+}
+
+.error {
+	font-size: 0.8rem;
+	color: #FF4A58;
+}
+
+button {
+	display: block;
+	border: none;
+	background: none;
+	padding: 0;
+	font: inherit;
+}
+
+button.primary {
+	background-color: #FF4A58;
+	color: #FFF;
+	padding: 0.6rem 0;
+	font-weight: 700;
+	width: 100%;
+	text-align: center;
+	transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s;
+}
+button.primary:hover {
+	background-color: #DB3B47;
+}
+button.primary:disabled {
+	background-color: #C2B8B8;
+	cursor: not-allowed;
+}
+button.primary:disabled:hover {
+	background-color: #C2B8B8;
+}
+button.primary.updating {
+	pointer-events: wait;
+}
