@@ -19,7 +19,7 @@
 	}
 </style>
 
-<a href="/" on:click|preventDefault={() => open.set(false)}>
+<a href="/" aria-label="Close cart" on:click|preventDefault={() => open.set(false)}>
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
 		<path d="M2 2l16 16" />
 		<path d="M18 2L2 18" />

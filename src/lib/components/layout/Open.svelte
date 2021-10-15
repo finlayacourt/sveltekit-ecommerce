@@ -23,7 +23,7 @@
 	}
 </style>
 
-<a href="/cart" on:click|preventDefault={() => open.set(true)}>
+<a href="/cart" aria-label="Open cart" on:click|preventDefault={() => open.set(true)}>
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
 		<path d="M1 7l3 11h14l3-11z"/>
 		<path d="M8 7l3-6 3 6"/>
