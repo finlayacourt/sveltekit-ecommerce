@@ -15,7 +15,7 @@ export const post: RequestHandler<Locals, FormData> = async request => {
 
 	if (!cart) {
 		cart = await cartCreateAdd(productId)
-		response.headers["set-cookie"] = serialize("cartId", cart.cartId, { path: "/", httpOnly: true })	
+		response.headers["set-cookie"] = serialize("cartId", cart.cartId, { path: "/", httpOnly: true, SameSite: true })	
 	}
 
 	response.body = JSON.stringify(cart)
