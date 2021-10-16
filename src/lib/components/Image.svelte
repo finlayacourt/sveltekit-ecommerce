@@ -2,8 +2,10 @@
 	export let src
 	export let alt = undefined
 	export let loading = undefined
+
 	export let sizes = undefined
-	export let widths = [300, 500, 700, 1000, 1500]
+	export let widths = undefined
+	export let width = 500 
 
 	function transform(url, width, format) {
 		const split = url.split("?")
@@ -14,8 +16,8 @@
 		return `${tokens.join('.')}${query}`
 	}
 
-	$: srcset = widths.map(width => `${transform(src, width, "webp")} ${width}w`).join(",")
-	$: fallback = transform(src, widths[1])
+	$: srcset = widths && widths.map(width => `${transform(src, width, "webp")} ${width}w`).join(",")
+	$: fallback = transform(src, width)
 </script>
 
 <style>

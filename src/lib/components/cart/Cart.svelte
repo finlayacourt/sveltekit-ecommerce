@@ -96,6 +96,8 @@
 						<Image
 							src={product.image}
 							alt={product.title}
+							widths={[300]}
+							width={300}
 						/>
 					</span>
 					<span slot="heading">

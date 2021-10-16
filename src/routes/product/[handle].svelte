@@ -76,6 +76,7 @@
 			src={product.image}
 			alt={product.title}
 			widths={[500, 700, 1000]}
+			width={700}
 			sizes="(min-width: 1182px) 500px, (min-width: 608px) 42vw, 88vw"
 		/>
 	</section>
