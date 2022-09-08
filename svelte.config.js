@@ -1,11 +1,16 @@
-import adapter from "@sveltejs/adapter-netlify"
+import adapter from "@sveltejs/adapter-auto"
 
-/** @type {import('@sveltejs/kit').Config} */
+/** @type {import("@sveltejs/kit").Config} */
 const config = {
 	kit: {
-		target: '#svelte',
-		adapter: adapter()
-	}
-};
+		adapter: adapter(),
+		inlineStyleThreshold: 1024,
+	},
+	vitePlugin: {
+		experimental: {
+			useVitePreprocess: true,
+		},
+	},
+}
 
-export default config;
+export default config

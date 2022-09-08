@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
+/build
 /.svelte-kit
 /package
-/build
-# Local Netlify folder
-.netlify
+.env
+.env.*
+!.env.example

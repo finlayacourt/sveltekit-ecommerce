@@ -1,17 +1,18 @@
+import type { TransitionConfig } from "svelte/transition"
 import { cubicInOut } from "svelte/easing"
 
-export function fade(node, params) {
+export function fade(n: unknown, p: unknown): TransitionConfig {
 	return {
 		duration: 400,
 		easing: cubicInOut,
-		css: (t,u) => `opacity: ${t};`
-	}		
+		css: (t, u) => `opacity: ${t};`,
+	}
 }
 
-export function slide(node, params) {
+export function slide(n: unknown, p: unknown): TransitionConfig {
 	return {
 		duration: 400,
 		easing: cubicInOut,
-		css: (t,u) => `transform: translateX(${u * 100}%);`
+		css: (t, u) => `transform: translateX(${u * 100}%);`,
 	}
 }

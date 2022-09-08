@@ -1,0 +1,2 @@
+schema: "src/lib/shopify/schema.json"
+documents: "src/lib/shopify/schema.gql"
