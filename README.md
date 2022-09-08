@@ -1,4 +1,4 @@
-# SvelteKit ecommerce store *on the edge*
+# SvelteKit ecommerce store _on the edge_
 
 ![Screenshot](https://user-images.githubusercontent.com/19372421/189044551-8eb1a021-1cd3-42c7-bbf9-8fd585932051.png)
 
@@ -12,5 +12,4 @@
 - Backend and frontend written using **SvelteKit**
 - Products, stock, carts and checkouts stored on Shopify’s **Storefront API**.
 - The backend interacts with Shopify using a handmade, type-safe **GraphQL** client.
-- When a checkout is created, an additional packing charge is added by the backend.
 - Responsive images using carefully chosen media conditions and automatically generated `srcset` tag.
