@@ -8,7 +8,7 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-vercel": "next",
 		"@sveltejs/kit": "next",
 		"@types/cookie": "^0.5.1",
 		"@types/node": "^18.7.14",

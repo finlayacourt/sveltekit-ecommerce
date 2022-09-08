@@ -1,9 +1,12 @@
-import adapter from "@sveltejs/adapter-auto"
+import adapter from "@sveltejs/adapter-vercel"
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			edge: true,
+			split: true,
+		}),
 		inlineStyleThreshold: 1024,
 	},
 	vitePlugin: {
