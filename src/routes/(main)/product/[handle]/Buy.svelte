@@ -31,7 +31,7 @@
 				>Remove from cart</button
 			>
 		</form>
-	{:else if false && !product.available}
+	{:else if !product.available}
 		<button class:pending={$pending} disabled class="primary" type="submit">Sold</button>
 	{:else}
 		<form action="/cart?/add" method="post" use:enhance={handleForm}>
