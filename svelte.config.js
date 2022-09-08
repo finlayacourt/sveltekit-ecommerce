@@ -5,9 +5,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			edge: true,
-			split: true,
 		}),
-		inlineStyleThreshold: 1024,
 	},
 	vitePlugin: {
 		experimental: {

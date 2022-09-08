@@ -5,13 +5,14 @@
 	export let data: PageServerData
 
 	function chunk<T>(array: T[], size: number) {
-		const chunked: T[][] = []
-		for (const item of array) {
-			const last = chunked[chunked.length - 1]
-			if (!last || last.length === size) {
-				chunked.push([item])
+		let chunked: [T, number][][] = []
+		let chunk: [T, number][] = []
+		for (let i = 0; i < array.length; i++) {
+			if (chunk.length < size) {
+				chunk.push([array[i]!, i])
 			} else {
-				last.push(item)
+				chunked.push(chunk)
+				chunk = []
 			}
 		}
 		return chunked
@@ -26,10 +27,10 @@
 </svelte:head>
 
 <nav>
-	{#each chunk(data.products, 3) as row, i}
+	{#each chunk(data.products, 3) as row}
 		<div class="row">
-			{#each row as product}
-				<Product {product} lazy={i > 6} />
+			{#each row as [product, index]}
+				<Product {product} {index} />
 			{/each}
 		</div>
 	{/each}

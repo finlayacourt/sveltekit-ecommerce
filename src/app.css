@@ -1,15 +1,15 @@
 @font-face {
 	font-family: "Proxima Nova";
-	src: url("./lib/fonts/proxima-nova-regular.woff2") format("woff2"),
-		url("./lib/fonts/proxima-nova-regular.woff") format("woff");
+	src: url("/fonts/proxima-nova-regular.woff2") format("woff2"),
+		url("/fonts/proxima-nova-regular.woff") format("woff");
 	font-weight: normal;
 	font-display: swap;
 }
 
 @font-face {
 	font-family: "Proxima Nova";
-	src: url("./lib/fonts/proxima-nova-bold.woff2") format("woff2"),
-		url("./lib/fonts/proxima-nova-bold.woff") format("woff");
+	src: url("/fonts/proxima-nova-bold.woff2") format("woff2"),
+		url("/fonts/proxima-nova-bold.woff") format("woff");
 	font-weight: bold;
 	font-display: swap;
 }

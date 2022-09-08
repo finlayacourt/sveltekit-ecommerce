@@ -2,8 +2,10 @@
 	import type { TProduct } from "$lib/shopify"
 	import Image from "$lib/components/Image.svelte"
 
+	export let fetchpriority: string | undefined = undefined
+	export let loading: string | undefined = undefined
+	export let index: number
 	export let product: TProduct
-	export let lazy = false
 </script>
 
 <a class:sold={!product.available} href="/product/{product.handle}">
@@ -12,7 +14,8 @@
 		alt={product.title}
 		widths={[350, 500, 650, 800, 950, 1100]}
 		sizes="(min-width: 1182px) 336px, (min-width: 608px) 28vw, 88vw"
-		{lazy}
+		loading={index > 3 ? "lazy" : undefined}
+		fetchpriority={index < 4 ? "high" : undefined}
 	/>
 	<div class="overlay">
 		<div>
