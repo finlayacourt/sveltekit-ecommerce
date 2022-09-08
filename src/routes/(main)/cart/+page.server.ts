@@ -1,6 +1,7 @@
 import type { PageServerLoad, Actions } from "./$types"
 import { shopify } from "$lib/shopify"
 import { error, redirect } from "@sveltejs/kit"
+import { tomorrow } from "$lib/tomorrow"
 
 export const load: PageServerLoad = async ({ parent }) => {
 	let { cart } = await parent()
@@ -29,7 +30,7 @@ export const actions: Actions = {
 			throw redirect(303, url)
 		} else {
 			let { id, url } = await shopify.checkout.create({ product_ids })
-			cookies.set("CHECKOUT_ID", id, { path: "/", sameSite: "strict" })
+			cookies.set("CHECKOUT_ID", id, { path: "/", sameSite: "strict", expires: tomorrow() })
 			throw redirect(303, url)
 		}
 	},
